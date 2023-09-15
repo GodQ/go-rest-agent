@@ -144,14 +144,36 @@ func (ctl *controller) GetTask(c *gin.Context) {
 	c.JSON(200, task)
 }
 
-func (ctl *controller) SendFile(c *gin.Context) {
+func (ctl *controller) UploadFile(c *gin.Context) {
+	target_path := c.PostForm("target_path")
+	if target_path == "" {
+		c.JSON(400, gin.H{"error": "target_path is required in form"})
+		return
+	}
+	file, err := c.FormFile("file")
+	if err != nil {
+		c.JSON(400, gin.H{"error": err.Error()})
+		return
+	}
+	utils.LogDebug(file.Filename)
+	err = c.SaveUploadedFile(file, target_path)
+	if err != nil {
+		c.JSON(400, gin.H{"error": err.Error()})
+		return
+	}
 	c.JSON(200, gin.H{
-		"message": "Create Task",
+		"message": "Upload file successfully",
 	})
 }
 
 func (ctl *controller) GetFile(c *gin.Context) {
-	c.JSON(200, gin.H{
-		"message": "Get File",
-	})
+	file_path := c.Query("file_path")
+	if file_path == "" {
+		c.JSON(400, gin.H{"error": "file_path is required in form"})
+		return
+	}
+	c.FileAttachment(file_path, "file")
+	// c.JSON(200, gin.H{
+	// 	"message": "Get File",
+	// })
 }

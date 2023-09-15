@@ -12,5 +12,5 @@ func SetApi(r *gin.Engine) {
 	apiV1.GET("/tasks/:task_id", controller.GetTask)
 	apiV1.POST("/tasks", controller.CreateTask)
 	apiV1.GET("/file", controller.GetFile)
-	apiV1.POST("/file", controller.SendFile)
+	apiV1.POST("/file", controller.UploadFile)
 }
