@@ -16,3 +16,6 @@ compress_build:
 	upx -9 $(agent_dist)/darwin
 	upx -9 $(agent_dist)/windows.exe
 	upx -9 $(agent_dist)/darwin-arm64
+
+package: build
+	tar zcvf dist/go-rest-agent.tgz dist/*
