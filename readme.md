@@ -8,7 +8,7 @@ This agent can be used to run commands in a host server and upload/fetch file in
 curl -L '127.0.0.1:5000/api/v1/file' \
 -H 'Content-Type: application/x-www-form-urlencoded' \
 -F 'target_path="/tmp/aaa.yaml"' \
--F 'file=@"/Users/chuanhaoq/a.yaml"'
+-F 'file=@"/Users/GodQ/a.yaml"'
 ```
 response:
 ```json
