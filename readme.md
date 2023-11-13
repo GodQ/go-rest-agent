@@ -1,3 +1,5 @@
+[![Go](https://github.com/GodQ/go-rest-agent/actions/workflows/go.yml/badge.svg?branch=main)](https://github.com/GodQ/go-rest-agent/actions/workflows/go.yml)
+
 # Introduction
 This agent can be used to run commands in a host server and upload/fetch file in this server. 
 
